@@ -72,9 +72,6 @@
         <c3p0.version>0.9.1.2</c3p0.version>
 
 
-        <!-- JSON版本号 -->
-        <json.version>2.4</json.version>
-
         <!--spring mvc 整合JSON-->
         <json.fastjson.version>1.1.15</json.fastjson.version>
         <json.jackson.version>1.9.13</json.jackson.version>
@@ -98,8 +95,15 @@
         <!-- commons-io版本号 -->
         <commons.io.version>2.4</commons.io.version>
 
+
+        <!-- JSON版本号 -->
+        <json.version>2.4</json.version>
         <!-- BeanUtils类，.net.sf.json-lib JSON依赖此包 -->
         <commons.beanutils.version>1.9.2</commons.beanutils.version>
+        <commons.collections.version>3.2.1</commons.collections.version>
+        <ezmorph.version>1.0.6</ezmorph.version>
+        <commons.lang.version>2.5</commons.lang.version>
+        <commons.logging.version>1.1.1</commons.logging.version>
 
 
         <!--文件上传-->
@@ -201,20 +205,20 @@
             <dependency>
                 <groupId>net.sf.json-lib</groupId>
                 <artifactId>json-lib</artifactId>
-                <version>2.4</version>
+                <version>${json.version}</version>
                 <classifier>jdk15</classifier>
             </dependency>
-            <!--&lt;!&ndash; net.sf.ezmorph JSON依赖的包 &ndash;&gt;
+            <!-- net.sf.ezmorph JSON依赖的包 -->
             <dependency>
                 <groupId>net.sf.ezmorph</groupId>
                 <artifactId>ezmorph</artifactId>
-                <version>1.0.6</version>
+                <version>${ezmorph.version}</version>
             </dependency>
-            &lt;!&ndash; net.sf.ezmorph JSON依赖的包 &ndash;&gt;
+            <!-- net.sf.ezmorph JSON依赖的包 -->
             <dependency>
                 <groupId>commons-collections</groupId>
                 <artifactId>commons-collections</artifactId>
-                <version>3.2.1</version>
+                <version>${commons.collections.version}</version>
             </dependency>
             <dependency>
                 <groupId>commons-beanutils</groupId>
@@ -224,13 +228,13 @@
             <dependency>
                 <groupId>commons-lang</groupId>
                 <artifactId>commons-lang</artifactId>
-                <version>2.5</version>
+                <version>${commons.lang.version}</version>
             </dependency>
             <dependency>
                 <groupId>commons-logging</groupId>
                 <artifactId>commons-logging</artifactId>
-                <version>1.1.1</version>
-            </dependency>-->
+                <version>${commons.logging.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
