@@ -14,8 +14,8 @@
     <!-- <bean class="cn.zy.an.ItemsController" /> -->
 
     <!-- 可以扫描controller、service、... 这里让扫描controller，指定controller的包 -->
-    <!--<context:component-scan base-package="cn.zy.mybatis.**.controller" />-->
-    <context:component-scan base-package="cn.zy.ssm.controller" />
+    <!--<context:component-scan base-package="com.ssm.**.controller" />-->
+    <context:component-scan base-package="com.ssm" />
 
     <!--注解映射器 -->
     <!--<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"/>-->
@@ -28,19 +28,20 @@
 	比如json转换解析器就默认加载了，如果使用mvc:annotation-driven不用配置上边的RequestMappingHandlerMapping和RequestMappingHandlerAdapter
 	实际开发时使用mvc:annotation-driven
 	 -->
-    <mvc:annotation-driven conversion-service="conversionService" />
+    <mvc:annotation-driven />
+    <!--<mvc:annotation-driven conversion-service="conversionService" />-->
 
 
     <!-- 自定义日期转换器 -->
-    <bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
-        <!-- 转换器 -->
+    <!--<bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+        &lt;!&ndash; 转换器 &ndash;&gt;
         <property name="converters">
             <set>
-                <!-- 日期类型转换 -->
+                &lt;!&ndash; 日期类型转换 &ndash;&gt;
                 <bean class="cn.zy.ssm.controller.converter.CustomDateConverter"/>
             </set>
         </property>
-    </bean>
+    </bean>-->
 
 
     <!--JSON 返回及 返回值编码问题-->
