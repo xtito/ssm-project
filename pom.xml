@@ -27,6 +27,7 @@
         <module>ssm-bean</module>
         <module>ssm-dao</module>
         <module>ssm-service</module>
+        <module>ssm-parent</module>
         <module>ssm-web</module>
     </modules>
 

@@ -40,6 +40,12 @@
             <artifactId>ssm-bean</artifactId>
             <version>${project.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.ssm.parent</groupId>
+            <artifactId>ssm-parent</artifactId>
+            <version>${project.version}</version>
+        </dependency>
     </dependencies>
 
 </project>
