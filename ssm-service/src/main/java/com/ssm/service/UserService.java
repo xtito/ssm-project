@@ -5,7 +5,7 @@ package com.ssm.service;
  * 2016/6/5 21:52
  */
 
-public class UserService {
+public interface UserService {
 
 
 }
