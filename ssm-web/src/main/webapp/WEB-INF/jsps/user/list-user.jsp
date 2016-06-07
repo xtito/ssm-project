@@ -54,8 +54,8 @@
                         <td>${user.gender == 1 ? '男' : user.gender == 2 ? '女' : '异常'}</td>
                         <td>${user.address}</td>
                         <td>
-                            <a href="#">编辑</a>
-                            <a href="#">删除</a>
+                            <a href="${ctx}/mvc/user/manager/update/ui?uuid=${user.uuid}">编辑</a>
+                            <a href="${ctx}/mvc/user/manager/delete?uuid=${user.uuid}">删除</a>
                         </td>
                     </tr>
                 </c:forEach>

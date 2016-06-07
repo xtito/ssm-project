@@ -6,7 +6,7 @@
 <mapper namespace="com.ssm.dao.mapper.UserMapper">
 
     <resultMap id="userResult" type="com.ssm.bean.User">
-        <id column="id" property="uuid" />
+        <id property="uuid" column="id" />
         <result property="userName" column="username" />
         <result property="birthday" column="birthday" />
         <result property="gender" column="sex" />
@@ -14,7 +14,7 @@
     </resultMap>
 
     <select id="getUserList" parameterType="java.util.Map" resultMap="userResult">
-        SELECT * FROM user
+        SELECT * FROM User_table
         <where>
             <if test="userName != null and userName != ''">
                 AND username = #{username}
@@ -29,6 +29,33 @@
                 AND address LIKE '%${address}%'
             </if>
         </where>
+    </select>
+
+    <delete id="deleteUser" parameterType="java.util.Map" >
+        DELETE FROM User_table WHERE id = ${uuid}
+    </delete>
+
+    <update id="updateUser" parameterType="com.ssm.bean.User">
+        UPDATE User_table
+        <set>
+            <if test="userName != null and userName != ''">
+                username = #{userName},
+            </if>
+            <if test="birthday != null and birthday != ''">
+                birthday = #{birthday},
+            </if>
+            <if test="gender != null">
+                sex = #{gender},
+            </if>
+            <if test="address != null and address != ''">
+                address = #{address}
+            </if>
+        </set>
+        WHERE id = #{uuid}
+    </update>
+
+    <select id="getUserById" parameterType="java.util.Map" resultMap="userResult">
+        SELECT * FROM User_table WHERE id = ${uuid}
     </select>
 
 </mapper>

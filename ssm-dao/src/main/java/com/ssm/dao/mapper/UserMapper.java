@@ -15,12 +15,12 @@ public interface UserMapper {
 
     void saveUser(User user);
 
-    void deleteUser(User user);
+    void deleteUser(Map<String, Object> param);
 
     void updateUser(User user);
 
     List<User> getUserList(Map<String, Object> param);
 
-    User getUserById(String uuid);
+    User getUserById(Map<String, Object> param);
 
 }

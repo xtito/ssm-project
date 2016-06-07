@@ -27,8 +27,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void deleteUser(User user) {
-        this.mapper.deleteUser(user);
+    public void deleteUser(Map<String, Object> map) {
+        this.mapper.deleteUser(map);
     }
 
     @Override
@@ -42,7 +42,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User getUserById(String uuid) {
-        return this.mapper.getUserById(uuid);
+    public User getUserById(Map<String, Object> param) {
+        return this.mapper.getUserById(param);
     }
 }
