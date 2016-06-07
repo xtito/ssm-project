@@ -5,4 +5,30 @@
 
 <mapper namespace="com.ssm.dao.mapper.UserMapper">
 
+    <resultMap id="userResult" type="com.ssm.bean.User">
+        <id column="id" property="uuid" />
+        <result property="userName" column="username" />
+        <result property="birthday" column="birthday" />
+        <result property="gender" column="sex" />
+        <result property="address" column="address" />
+    </resultMap>
+
+    <select id="getUserList" parameterType="java.util.Map" resultMap="userResult">
+        SELECT * FROM user
+        <where>
+            <if test="userName != null and userName != ''">
+                AND username = #{username}
+            </if>
+            <if test="birthday != null and birthday != ''">
+                AND birthday = #{birthday}
+            </if>
+            <if test="gender != null and gender != ''">
+                AND sex = #{gender}
+            </if>
+            <if test="address != null and address != ''">
+                AND address LIKE '%${address}%'
+            </if>
+        </where>
+    </select>
+
 </mapper>

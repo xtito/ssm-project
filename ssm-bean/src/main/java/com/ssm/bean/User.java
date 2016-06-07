@@ -12,8 +12,9 @@ public class User implements Serializable {
 
     private String uuid;
     private String userName;
-    private String idCard;
+    private String birthday;
     private int gender;
+    private String address;
 
     public String getUuid() {
         return uuid;
@@ -31,12 +32,12 @@ public class User implements Serializable {
         this.userName = userName;
     }
 
-    public String getIdCard() {
-        return idCard;
+    public String getBirthday() {
+        return birthday;
     }
 
-    public void setIdCard(String idCard) {
-        this.idCard = idCard;
+    public void setBirthday(String birthday) {
+        this.birthday = birthday;
     }
 
     public int getGender() {
@@ -45,5 +46,13 @@ public class User implements Serializable {
 
     public void setGender(int gender) {
         this.gender = gender;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 }

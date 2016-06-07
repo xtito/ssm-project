@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" %>
+<%@ include file="/inc.jsp" %>
 <!DOCTYPE html>
 
 <%--
@@ -12,6 +13,9 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
   <title></title>
+  <script type="text/javascript">
+      window.location.href = "${ctx}/mvc/user/manager/page";
+  </script>
 </head>
 <body>
 
