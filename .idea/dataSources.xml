@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="1923241229">
+  <component name="DataSourceManagerImpl" format="xml" hash="3361628794">
     <data-source source="LOCAL" name="MySQL - test@localhost" uuid="f764654a-e171-4784-859a-1475dfebdd60">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>
@@ -13,6 +13,11 @@
         <property name="characterSetResults" value="utf8" />
         <property name="yearIsDateType" value="false" />
       </driver-properties>
+    </data-source>
+    <data-source source="LOCAL" name="localhost(VM)@NEWKJZFDB_MERGE" uuid="7b1a52b8-8e6f-4496-8ec8-6963816c9deb">
+      <driver-ref>sqlserver.ms</driver-ref>
+      <jdbc-driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</jdbc-driver>
+      <jdbc-url>jdbc:sqlserver://192.168.161.135:1433;databaseName=NEWKJZFDB_MERGE</jdbc-url>
     </data-source>
   </component>
 </project>

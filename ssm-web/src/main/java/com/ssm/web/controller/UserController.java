@@ -2,12 +2,17 @@ package com.ssm.web.controller;
 
 import com.ssm.bean.User;
 import com.ssm.service.UserService;
+import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -72,6 +77,30 @@ public class UserController {
         }
 
         return "redirect:/mvc/user/manager/page";
+    }
+
+    @ResponseBody
+    @RequestMapping("/upload")
+    public String upload(@RequestParam("file") MultipartFile[] files) {
+
+        JSONObject json = new JSONObject();
+
+        if (files != null) {
+            for (MultipartFile file : files) {
+                if (!file.isEmpty()) {
+                    try {
+                        String path = "F:\\test\\upload\\" + file.getOriginalFilename();
+                        file.transferTo(new File(path));
+                        json.put("info", "上传成功了");
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
+
+        return json.toString();
+
     }
 
 }

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+    <title></title>
+
+
+
+</head>
+<body>
+
+    <iframe id="frame_content" name="frame_content" src="a.html" scrolling="no" frameborder="0"></iframe>
+
+    <div><button onclick="toggleOverlay()">显示</button></div>
+
+</body>
+</html>
+
+<script type="text/javascript" language="javascript">
+
+    // 开始
+    function resetIFrameHeight(){
+
+        // 获取IFrame元素
+        var IFrame = document.getElementById("frame_content");
+        // 获取IFrame内的页面
+        var IFrameInnerDoc = IFrame.contentWindow.document;
+
+        try{
+
+            var bHeight = IFrameInnerDoc.body.scrollHeight;
+
+            var dHeight = IFrameInnerDoc.documentElement.scrollHeight;
+
+            IFrame.height =  Math.max(bHeight, dHeight);
+
+        }catch (ex){}
+
+    }
+
+    window.setInterval("resetIFrameHeight()", 200);
+
+
+    function toggleOverlay() {
+        var IFrame = document.getElementById("frame_content");
+        var IFrameChild = IFrame.contentWindow.document;
+        IFrameChild.getElementById("hid_div").style.display="block";
+        console.log(IFrameChild.getElementById("hid_div"));
+    }
+
+</script>
