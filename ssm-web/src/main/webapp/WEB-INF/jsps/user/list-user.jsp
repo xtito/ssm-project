@@ -48,7 +48,7 @@
                 <div class="plugin">
                     <!--用来存放文件信息-->
                     <div id="the_list" class="uploader-list">
-                        <p>请选择要上传的文件</p>
+                        <p class="default-text">请选择要上传的文件</p>
                     </div>
                     <div class="buts">
                         <div id="picker" class="picker">选择文件</div>
