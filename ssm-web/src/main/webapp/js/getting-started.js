@@ -39,7 +39,7 @@ jQuery(function() {
         } else if (fileSize >= pbSize) {
             sizeStr = (fileSize / pbSize).toFixed(2) + " PB";
         } else {
-            sizeStr = fileSize + " 字节";
+            sizeStr = fileSize + " 字节1";
         }
 
         $list.children(".default-text").remove();
