@@ -24,41 +24,77 @@ jQuery(function() {
 
     // 当有文件添加进来的时候
     uploader.on('fileQueued', function (file) {
-        $list.append('<div id="' + file.id + '" class="item">' +
-            '<h4 class="info">' + file.name + '</h4>' +
-            '<p class="state">等待上传...</p>' +
+        var sizeStr = "";
+        var fileSize = file.size;
+        var kbSize = 1024;// KB单位
+        var mbSize = kbSize * 1024;// MB单位
+        var gbSize = mbSize * 1024;// GB单位
+        var pbSize = gbSize * 1024;// PB单位
+        if (fileSize >= kbSize && fileSize < mbSize) {
+            sizeStr = (fileSize / kbSize).toFixed(2) + " KB";
+        } else if (fileSize >= mbSize && fileSize < gbSize) {
+            sizeStr = (fileSize / mbSize).toFixed(2) + " MB";
+        } else if (fileSize >= gbSize && fileSize < pbSize) {
+            sizeStr = (fileSize / gbSize).toFixed(2) + " GB";
+        } else if (fileSize >= pbSize) {
+            sizeStr = (fileSize / pbSize).toFixed(2) + " PB";
+        } else {
+            sizeStr = fileSize + " 字节";
+        }
+
+        $list.append('<div id="' + file.id + '" class="upload-con">' +
+            '   <h4 class="f-col f-name" title="'+ file.name +'">'+ file.name +'</h4>' +
+            '   <span class="f-col f-size" title="'+ sizeStr +'">'+ sizeStr +'</span>' +
+            '   <div class="f-col progress">' +
+            '       <div class="progress-striped active">' +
+            '           <div class="progress-bar" style="width: 0;"></div>' +
+            '       </div>' +
+            '   </div>' +
+            '   <p class="f-col f-state">等待上传...</p>' +
+            '   <div class="f-col f-buts">' +
+            '       <i class="icon-trash"><a href="#"></a></i>' +
+            '   </div>' +
             '</div>');
     });
 
     // 文件上传过程中创建进度条实时显示。
     uploader.on('uploadProgress', function (file, percentage) {
-        var $li = $('#' + file.id),
-            $percent = $li.find('.progress .progress-bar');
+        var $li = $('#' + file.id);
+        var $percent = $li.find('.progress-striped .progress-bar');
 
         // 避免重复创建
         if (!$percent.length) {
-            $percent = $('<div class="progress progress-striped active">' +
-                '<div class="progress-bar" role="progressbar" style="width: 0">' +
-                '</div>' +
-                '</div>').appendTo($li).find('.progress-bar');
+            var html = '<div class="progress-striped active">' +
+                '   <div class="progress-bar" style="width: 0;"></div>' +
+                '</div>';
+            var $progress = $li.find(".progress");
+            $progress.append(html);
+            $percent = $li.find('.progress-bar');
         }
 
-        $li.find('p.state').text('上传中');
+        var $state = $li.find('p.f-state');
+        $state.addClass("have-in-hand");
+        $state.text('上传中..');
 
         $percent.css('width', percentage * 100 + '%');
     });
 
     uploader.on('uploadSuccess', function (file, response) {
-        //console.log(response.info);
-        $('#' + file.id).find('p.state').text('已上传');
+        var $state = $('#' + file.id).find('p.f-state');
+        $state.removeAttr("class");
+        $state.attr("class", "f-col f-state success");
+        $state.text('上传完毕');
     });
 
     uploader.on('uploadError', function (file) {
-        $('#' + file.id).find('p.state').text('上传出错');
+        var $state = $('#' + file.id).find('p.f-state');
+        $state.removeAttr("class");
+        $state.attr("class", "f-col f-state failed");
+        $state.text('上传出错');
     });
 
     uploader.on('uploadComplete', function (file) {
-        $('#' + file.id).find('.progress').fadeOut();
+        //$('#' + file.id).find('.progress-striped').fadeOut();
     });
 
     uploader.on('all', function (type) {
