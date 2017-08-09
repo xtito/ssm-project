@@ -42,7 +42,7 @@ jQuery(function() {
             sizeStr = fileSize + " 字节";
         }
 
-        $list.html("");
+        $list.children(".default-text").remove();
         $list.append('<div id="' + file.id + '" class="upload-con">' +
             '   <h4 class="f-col f-name" title="'+ file.name +'">'+ file.name +'</h4>' +
             '   <span class="f-col f-size" title="'+ sizeStr +'">'+ sizeStr +'</span>' +
